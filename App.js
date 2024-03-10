@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -20,29 +20,52 @@ import IndustryScreen from "./industry-screen";
 import LandingScreen from "./landing-screen";
 import ShopDetailScreen from "./shop-detail-screen";
 import PriceCalculator from "./price-calculator";
-
+import firebase from './firebase-config';
 
 const Stack = createStackNavigator();
 
 
 export default function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  useEffect(() => {
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Landing"
-          component={LandingScreen}
-          options={{ title: "Industries" }}
-        />
+      <Stack.Screen
+        name="Landing"
+        options={{ title: "Industries" }}
+      >
+        {props => <LandingScreen {...props} loggedIn={loggedIn} username={username} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
+      </Stack.Screen>
         <Stack.Screen
           name="Industry"
           component={IndustryScreen}
           options={({ route }) => ({ title: route.params.industry })}
         />
-        <Stack.Screen name="ShopDetail" component={ShopDetailScreen} />
-        <Stack.Screen name="PriceCalculator" component={PriceCalculator} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen
+          name="ShopDetail"
+          component={ShopDetailScreen}
+          options={{ title: "Shop Detail" }}
+        />
+        <Stack.Screen
+          name="PriceCalculator"
+          component={PriceCalculator}
+          options={{ title: "Price Calculator" }}
+        />
+        <Stack.Screen
+          name="Login"
+          options={{ title: "Login" }}
+        >
+          {props => <LoginScreen {...props} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
+        </Stack.Screen>
+        <Stack.Screen
+          name="Signup"
+          component={SignupScreen}
+          options={{ title: "Signup" }}
+        />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
