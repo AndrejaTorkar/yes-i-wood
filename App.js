@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaView } from 'react-native';
 import { styles } from "./styles";
 import CraftsmanData from "./craftsman-data";
 import { LoginScreen, SignupScreen } from "./login";
@@ -32,43 +33,45 @@ export default function App() {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-      <Stack.Screen
-        name="Landing"
-        options={{ title: "Industries" }}
-      >
-        {props => <LandingScreen {...props} loggedIn={loggedIn} username={username} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
-      </Stack.Screen>
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Stack.Navigator>
         <Stack.Screen
-          name="Industry"
-          component={IndustryScreen}
-          options={({ route }) => ({ title: route.params.industry })}
-        />
-        <Stack.Screen
-          name="ShopDetail"
-          component={ShopDetailScreen}
-          options={{ title: "Shop Detail" }}
-        />
-        <Stack.Screen
-          name="PriceCalculator"
-          component={PriceCalculator}
-          options={{ title: "Price Calculator" }}
-        />
-        <Stack.Screen
-          name="Login"
-          options={{ title: "Login" }}
+          name="Landing"
+          options={{ title: "Industries" }}
         >
-          {props => <LoginScreen {...props} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
+          {props => <LandingScreen {...props} loggedIn={loggedIn} username={username} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
         </Stack.Screen>
-        <Stack.Screen
-          name="Signup"
-          component={SignupScreen}
-          options={{ title: "Signup" }}
-        />
-      </Stack.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer>
+          <Stack.Screen
+            name="Industry"
+            component={IndustryScreen}
+            options={({ route }) => ({ title: route.params.industry })}
+          />
+          <Stack.Screen
+            name="ShopDetail"
+            component={ShopDetailScreen}
+            options={{ title: "Shop Detail" }}
+          />
+          <Stack.Screen
+            name="PriceCalculator"
+            component={PriceCalculator}
+            options={{ title: "Price Calculator" }}
+          />
+          <Stack.Screen
+            name="Login"
+            options={{ title: "Login" }}
+          >
+            {props => <LoginScreen {...props} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
+          </Stack.Screen>
+          <Stack.Screen
+            name="Signup"
+            component={SignupScreen}
+            options={{ title: "Signup" }}
+          />
+        </Stack.Navigator>
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 

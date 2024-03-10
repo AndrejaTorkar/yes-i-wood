@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { styles } from "./styles";
 import CraftsmanData from "./craftsman-data";
 
@@ -13,6 +13,7 @@ const LandingScreen = ({ navigation, loggedIn, username, setLoggedIn, setUsernam
   };
 
   return (
+    <ScrollView>
     <View style={styles.landingContainer}>
       {/* Display signed-in user information and logout button */}
       {loggedIn && (
@@ -63,6 +64,7 @@ const LandingScreen = ({ navigation, loggedIn, username, setLoggedIn, setUsernam
         </TouchableOpacity>
       </View>
     </View>
+    </ScrollView>
   );
 };
 
