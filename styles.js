@@ -19,15 +19,17 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     industryButton: {
-      backgroundColor: "#2B3499",
+      // backgroundColor: "#2B3499",
       padding: 10,
       borderRadius: 5,
       marginBottom: 10,
       width: field_width * 0.4,
-      height: field_width * 0.4 * 0.8
+      height: field_width * 0.4 * 0.8,
+      borderWidth: 3,
+      borderColor: "black",
     },
     industryButtonText: {
-      color: "#FFF",
+      color: "#000",
       fontSize: 16,
       fontWeight: "bold",
       textAlign: "center"

@@ -1,6 +1,9 @@
+import { LANDING_IMG_PATHS } from "./constants";
+
 let CraftsmanData = [
     {
         industry: "Woodworking",
+        img: LANDING_IMG_PATHS.wood1,
         shops: [
             {
                 name: "Make A Table",
@@ -30,6 +33,7 @@ let CraftsmanData = [
     },
     {
         industry: "Plumbing",
+        img: LANDING_IMG_PATHS.plumbing1,
         shops: [
             {
                 name: "FlowTech Plumbing Solutions",
@@ -59,6 +63,7 @@ let CraftsmanData = [
     },
     {
         industry: "Landscape",
+        img: LANDING_IMG_PATHS.landscape1,
         shops: [
             {
                 name: "GreenThumb Landscaping",
@@ -88,6 +93,7 @@ let CraftsmanData = [
     },
     {
         industry: "Cleaning",
+        img: LANDING_IMG_PATHS.cleaning1,
         shops: [
             {
                 name: "Sparkle Clean Services",

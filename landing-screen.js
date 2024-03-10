@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, ImageBackground } from "react-native";
 import { styles } from "./styles";
 import CraftsmanData from "./craftsman-data";
 
@@ -35,7 +35,8 @@ const LandingScreen = ({ navigation, loggedIn, username, setLoggedIn, setUsernam
               navigation.navigate("Industry", { industry: data.industry })
             }
           >
-            <Text style={styles.industryButtonText}>{data.industry}</Text>
+                <Text style={styles.industryButtonText}>{data.industry}</Text>
+
           </TouchableOpacity>
         ))}
       </View>
