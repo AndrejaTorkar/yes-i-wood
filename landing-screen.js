@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+// File formatted with Prettier
+// ATorkar started writing code
+// RESOURCES: https://www.coursera.org/learn/uol-cm3050-mobile-development
+
 import { View, Text, TouchableOpacity, ScrollView, ImageBackground } from "react-native";
 import { styles } from "./styles";
 import CraftsmanData from "./craftsman-data";
@@ -7,12 +10,12 @@ const LandingScreen = ({ navigation, loggedIn, username, setLoggedIn, setUsernam
 
   // Function to handle logout
   const handleLogout = () => {
-    // Perform logout actions here (clearing session, etc.)
-    setLoggedIn(false); // Update loggedIn state
-    setUsername(""); // Clear username
+    setLoggedIn(false);
+    setUsername("");
   };
 
   return (
+    // Return a ScrollView containing the landing screen
     <ScrollView>
     <View style={styles.landingContainer}>
       {/* Display signed-in user information and logout button */}
@@ -25,28 +28,32 @@ const LandingScreen = ({ navigation, loggedIn, username, setLoggedIn, setUsernam
         </View>
       )}
 
-      <Text style={styles.landingTitle}>Select an Industry:</Text>
-      <View style={styles.industryButtonGrid}>
-        {CraftsmanData.map((data, index) => (
-          <TouchableOpacity
-            key={index}
-            style={styles.industryButton}
-            onPress={() =>
-              navigation.navigate("Industry", { industry: data.industry })
-            }
-          >
-                <Text style={styles.industryButtonText}>{data.industry}</Text>
+      <Text style={styles.logo}>YES, I WOOD</Text>
 
-          </TouchableOpacity>
-        ))}
+      <Text style={styles.landingTitle}>Find your Craftsman by Industry:</Text>
+      <View style={styles.industryButtonGrid}>
+      {CraftsmanData.map((data, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => navigation.navigate("Industry", { industry: data.industry })}
+            >
+              <ImageBackground
+                source={data.img}
+                style={styles.industryButton}
+                imageStyle={{ borderRadius: 10 }}
+              >
+                <Text style={styles.industryButtonText}>{data.industry}</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          ))}
       </View>
 
       <View>
         <TouchableOpacity
-          style={styles.signupButton}
+          style={styles.calcButton}
           onPress={() => navigation.navigate("PriceCalculator")}
         >
-          <Text style={styles.buttonText}>Wood calculator</Text>
+          <Text style={styles.calcButtonText}>Wood calculator</Text>
         </TouchableOpacity>
       </View>
 
@@ -70,3 +77,5 @@ const LandingScreen = ({ navigation, loggedIn, username, setLoggedIn, setUsernam
 };
 
 export default LandingScreen;
+
+// ATorkar finished writing code

@@ -31,12 +31,11 @@
         "projectId": "421f455a-e40a-4145-8dc4-077bf8a1e97a"
       }
     },
-    "sdkVersion": "49.0.0",
-    "updates": {
-      "url": "https://u.expo.dev/421f455a-e40a-4145-8dc4-077bf8a1e97a"
-    },
     "runtimeVersion": {
       "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/421f455a-e40a-4145-8dc4-077bf8a1e97a"
     }
   }
 }

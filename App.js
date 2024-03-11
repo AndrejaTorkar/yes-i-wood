@@ -1,47 +1,42 @@
+// File formatted with Prettier
+// ATorkar started writing code
+// RESOURCES: https://www.coursera.org/learn/uol-cm3050-mobile-development
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SafeAreaView } from 'react-native';
-import { styles } from "./styles";
-import CraftsmanData from "./craftsman-data";
+import { SafeAreaView } from "react-native";
 import { LoginScreen, SignupScreen } from "./login";
-import { field_width } from "./constants";
-import { TableView, Section, Cell } from "react-native-tableview-simple";
-import ShopCell from "./shop-cell";
 import IndustryScreen from "./industry-screen";
 import LandingScreen from "./landing-screen";
 import ShopDetailScreen from "./shop-detail-screen";
 import PriceCalculator from "./price-calculator";
-import firebase from './firebase-config';
 
+// App is a functional component that returns a NavigationContainer
 const Stack = createStackNavigator();
 
-
 export default function App() {
+  // Set up state for the logged in status and username
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   return (
+    // Return a SafeAreaView containing a NavigationContainer
     <SafeAreaView style={{ flex: 1 }}>
       <NavigationContainer>
         <Stack.Navigator>
-        <Stack.Screen
-          name="Landing"
-          options={{ title: "Industries" }}
-        >
-          {props => <LandingScreen {...props} loggedIn={loggedIn} username={username} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
-        </Stack.Screen>
+          <Stack.Screen name="Landing" options={{ title: "Industries" }}>
+            {(props) => (
+              <LandingScreen
+                {...props}
+                loggedIn={loggedIn}
+                username={username}
+                setLoggedIn={setLoggedIn}
+                setUsername={setUsername}
+              />
+            )}
+          </Stack.Screen>
           <Stack.Screen
             name="Industry"
             component={IndustryScreen}
@@ -57,11 +52,14 @@ export default function App() {
             component={PriceCalculator}
             options={{ title: "Price Calculator" }}
           />
-          <Stack.Screen
-            name="Login"
-            options={{ title: "Login" }}
-          >
-            {props => <LoginScreen {...props} setLoggedIn={setLoggedIn} setUsername={setUsername} />}
+          <Stack.Screen name="Login" options={{ title: "Login" }}>
+            {(props) => (
+              <LoginScreen
+                {...props}
+                setLoggedIn={setLoggedIn}
+                setUsername={setUsername}
+              />
+            )}
           </Stack.Screen>
           <Stack.Screen
             name="Signup"
@@ -75,4 +73,4 @@ export default function App() {
   );
 }
 
-
+// ATorkar finished writing code
